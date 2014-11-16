@@ -1,0 +1,27 @@
+
+Find all files on machine
+> load into database
+
+Move files to new folder
+> find all files
+> Create folder structure and move files
+> Delete file from original location
+
+option > Mark file as moved but leave file where it is.
+option > look for best qualiyt file and only move high quality
+
+
+Copy directry
+>find all files
+>load into database
+>copy files into new dir structure
+
+Clean up current directry
+
+
+TODO:
+
+> Create command line loop that promps user for options
+> Add quality indicator on music file
+> Create query interface for music files
+> Dedupe interface
