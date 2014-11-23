@@ -1,5 +1,5 @@
 __author__ = 'gmoore'
-import musiclibrary
+import musiclibrarymanager
 import sqlite3
 
 class musicdb(object):
@@ -109,7 +109,7 @@ class musicdb(object):
             cursor = db.execute("SELECT name,path,songcount from musiclibrary")
             rl= cursor.fetchone()
 
-            ml = musiclibrary.MusicLibrary(rl[0],rl[1])
+            ml = musiclibrarymanager.MusicLibraryManager(rl[0],rl[1])
             return ml
 
         except Exception as e:

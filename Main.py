@@ -1,7 +1,7 @@
 __author__ = 'gmoore'
 import os
 import song,musicdb
-import musiclibrary
+import musiclibrarymanager
 import readline
 import dupinator
 import song
@@ -15,10 +15,39 @@ def start():
     while True:
 
         input = raw_input('What do you want to do? ').strip()
+
+        if input == "allison":
+            print "Dogs Rule!!!!!"
+
+        if input == "find files":
+
+            while True:
+
+                sourse_path = raw_input('Enter path to start search: ')
+
+                mlm = musiclibrarymanager.MusicLibraryManager
+                ml = mlm.createfrompath(sourse_path,path)
+
+                print  ml.songcount
+
+                mlm.orginizelibrary()
+
+
         if input == "test":
             s = song.Song('/Users/gmoore/Music/Beatles - All You Need Is Love.mp3')
-            s.print_tags()
+            s2 = song.Song('/Users/gmoore/Music/Beatles - All You Need Is Love.mp3')
+            s3 = song.Song('/Users/gmoore/Music/Band - Acadian Driftwood.mp3')
 
+            s.print_tags()
+            s2.print_tags()
+            s3.print_tags()
+
+            print s == s2
+            print s.compare(s2)
+            print s == s3
+            print s.compare(s3)
+            print s == s
+            print s.compare(s)
             print'*******************'
 
 
@@ -26,14 +55,17 @@ def start():
             print 'running testing suite'
 
         if input =="GetLib":
-            input = raw_input('enter library name ').strip()
+            name = raw_input('enter library name ').strip()
+            path = raw_input('enter path ').strip()
+
             #ml = musicdb.musicdb('geody2')
-            ml = musiclibrary.MusicLibrary(input,'/Users/gmoore/Music/')
-            ml.orginizelibrary('/Users/gmoore/MusicLib')
+            ml = musiclibrarymanager.MusicLibraryManager()
+            sl = ml.createfrompath('/Users/gmoore/Music/',name)
+            sl.printsongs()
 
+            ml = musiclibrarymanager.MusicLibraryManager()
+            ml.createfrompath(path,name)
 
-            #ml.getmusiclib('/Users/gmoore/Music')
-            print 'getting ml....'
 
         elif input == "Songtest":
             s = song.Song("/Users/gmoore/Music/Band - Acadian Driftwood.mp3")
@@ -66,7 +98,7 @@ def test():
     db.testdb()
 
 def newtest():
-    ml = musiclibrary.MusicLibrary('test2','/Users/gmoore/Music')
+    ml = musiclibrarymanager.MusicLibraryManager('test2','/Users/gmoore/Music')
 
     print ml.songcount
     #print ml.songlib
